@@ -1,0 +1,14 @@
+"----- LS -----"
+total 128
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 f1
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 f2
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 f3
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 f4
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 f5
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 h1
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 h2
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 h3
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 h4
+-rwxr-xr-x 1 brownie brownie  0 nov 29 13:31 h5
+-rwxr-xr-x 1 brownie brownie 17 nov 29 13:31 log.txt
+"----- ERROR -----"

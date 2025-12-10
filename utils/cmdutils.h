@@ -1,3 +1,10 @@
+/** 
+ * cmdutils.h
+ * @author: Yeray Alcala Paz
+ * 
+ * Archivo header con funciones
+ *  útiles respecto a los comandos.
+ */
 
 #ifndef CMDUTILS_H
 #define CMDUTILS_H
@@ -14,11 +21,13 @@ using namespace std;
  * IMPORTANT!! inputted str will be converted into just the command part.
  *              Make sure to pass a copy if you want to keep it untouched.
  * 
- * @param str   (in & out)  Command line input. Will be converted into just the command.
+ * @param str (in & out)  Command line input. Will be converted into just the command.
  * @param in (out)  trimmed in redirection of inputted raw command.
  * @param out (out) trimmed out redirection of inputted raw command.
+ * @param err (out) trimmed err redirection of inputted raw command.
+ * @param appout (out) trimmed appout redirection of inputted raw command.
  */
-void getredir(char* str, char* & in, char* & out);
+void getredir(char* str, char* & in, char* & out, char* & err, char* & appout);
 
 /**
  * Executes a given string as if it was a command.

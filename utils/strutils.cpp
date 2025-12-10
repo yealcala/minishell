@@ -1,4 +1,10 @@
-
+/** 
+ * strutils.cpp
+ * @author: Yeray Alcala Paz
+ * 
+ * Implementación de algunas funciones
+ *  útiles para cadenas de carácteres.
+ */
 #include "strutils.h"
 
 using namespace std;
@@ -59,4 +65,16 @@ char* strtrim(char* str) {
   
   // Devuelve la dirección del nuevo string
   return str;
+}
+
+int strsch(char* str, char c) {
+  if(str == NULL) return -1;
+
+  int i = 0;
+  while(str[i] != '\0')
+    if(str[i] == c)
+      return i;
+    else ++i;
+
+  return -1;
 }

@@ -1,4 +1,10 @@
-
+/** 
+ * strutils.h
+ * @author: Yeray Alcala Paz
+ * 
+ * Archivo header de algunas funciones
+ *  útiles para cadenas de carácteres.
+ */
 #ifndef STRUTILS_H
 #define STRUTILS_H
 
@@ -59,5 +65,14 @@ int strsplit(char * str, const char * delim, char ** & parts);
  * @return puntero a char apuntando al primer caracter de la cadena str que no es un espacio o tabulador 
  */
 char* strtrim(char* str);
+
+/**
+ * Busca la primera posición del caracter c en la cadena str.
+ * 
+ * @param str Cadena de caracteres a procesar.
+ * @param c Caracter a buscar.
+ * @return -1 si el caracter no se encuentra en la cadena, el índice si no.
+ */
+int strsch(char* str, char c);
 
 #endif

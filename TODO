@@ -1,0 +1,7 @@
+- Command aliases
+- Multipipes (allow consecutive pipes)
+- Support for " "
+- Support for script structures:
+	- if/else
+	- while
+	- for

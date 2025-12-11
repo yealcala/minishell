@@ -1,0 +1,2 @@
+Trunc
+Appended line

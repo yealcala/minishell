@@ -31,7 +31,6 @@ void ejecutar(char cmd[]);
 
 const int INPUT_MAX_SIZE = 255;
 static char EXIT[] = "salir";
-static char CD[] = "cd";
 
 int main(int argc, char* argv[]) {
     char cmd[INPUT_MAX_SIZE+1];

@@ -1,0 +1,10 @@
+EspecificacionesMinishell.pdf
+LICENSE
+README.md
+TODO
+log.txt
+minishell
+minishell.cpp
+prueba
+test
+utils

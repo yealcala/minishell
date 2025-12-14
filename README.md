@@ -73,7 +73,12 @@ Although it's a basic feature, you can create a file that contains commands (one
 ```bash
 ./minishell path/to/file
 ```
-and let the magic do its work
+and let the magic do its work. Any script can exit inmediately by using command
+
+```
+salir
+```
+If not, whole script will be executed until EOF.
 
 
 ## Characteristics

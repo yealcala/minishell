@@ -1,0 +1,15 @@
+lsapp.txt
+lscat.txt
+lserr.txt
+lsn.txt
+a
+agur
+b
+c
+error
+ls.dat
+lserr
+lssort.dat
+meow
+myscript.ms
+scripttest

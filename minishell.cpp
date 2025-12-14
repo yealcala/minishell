@@ -44,6 +44,8 @@ int main(int argc, char* argv[]) {
 
         char **trozos;
         while(strcmp(cmd, EXIT) != 0) {
+            int commentIndex = strsch(cmd, '#');
+            if(commentIndex >= 0) cmd[commentIndex] = '\0'; // Eliminar comentarios.
             int num = strsplit(cmd, ";", trozos);
             for(int i = 0; i < num; i++) 
                 ejecutar(*(trozos+i));
@@ -65,6 +67,8 @@ int main(int argc, char* argv[]) {
             char **trozos;
             entrada.getline(cmd, INPUT_MAX_SIZE, '\n'); 
             while (! entrada.eof() && strcmp(cmd, EXIT) != 0 ) { // While can read line and not exit command.
+                int commentIndex = strsch(cmd, '#');
+                if(commentIndex >= 0) cmd[commentIndex] = '\0'; // Eliminar comentarios.
                 int num = strsplit(cmd, ";", trozos);
                 for(int i = 0; i < num; i++)
                     ejecutar(*(trozos+i));

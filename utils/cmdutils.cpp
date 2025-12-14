@@ -21,7 +21,7 @@ static char CD[] = "cd";
 
 void getredir(char* str, char* & in, char* & out, char* & err, char* & appout) {
     int i = 0;
-    in = NULL; out = NULL; err = NULL; appout = NULL;
+    in = NULL; out = NULL; err = NULL; appout = NULL;i++;
     
     const int n = strlen(str);
     for(int i = 0; i < n; i++) {
@@ -39,10 +39,10 @@ void getredir(char* str, char* & in, char* & out, char* & err, char* & appout) {
                 } else if(i < n-1 && *(str+i+1) == '>') { // >> APPOUT
                     *(str+i+1) = '\0';
                     appout = str+i+2;
-                    out = NULL;
+                    out = nullptr;
                 } else { // > OUT
                     out = str+i+1;
-                    appout = NULL;
+                    appout = nullptr;
                 }
 
                 break;
@@ -106,7 +106,8 @@ void _doRedirections(char *pathin, char *pathout, char *patherr, char *pathappou
 void _execChild(char **splitCmd, char *pathin, char *pathout, char *patherr, char *pathappout, int exitCode) {
     _doRedirections(pathin, pathout, patherr, pathappout, exitCode);
     execvp(splitCmd[0], splitCmd);
-    perror("ERROR: Couldn't execute command! Does it exist?\n");
+    std::cerr << "ERROR: Couldn't execute command! Does it exist? " << endl 
+        << splitCmd[0] << ": " << std::strerror(errno) << '\n';
     free(splitCmd);
     exit(exitCode);
 }
@@ -121,9 +122,6 @@ void _execChild(char **splitCmd, char *pathin, char *pathout, char *patherr, cha
 }
 
 void ejecutar(char command[]) {
-    int commentIndex = strsch(command, '#');
-    if(commentIndex >= 0) command[commentIndex] = '\0';
-
     if(command == NULL || command[0] == '\0') return;
 
     char** trozosTuberia;
@@ -145,18 +143,15 @@ void ejecutar(char command[]) {
             // movería el proceso hijo, no el padre...
             if(count0 > 2) cerr << "cd: Too many arguments" << endl;
             else {
-                if(count0 == 1 || (count0 == 2 && trozos_cmd0[1][0] == '~')){
+                if(count0 == 1 || (count0 == 2 && trozos_cmd0[1][0] == '~')) {
                     // Miramos la varable $HOME. Como podría ser NULL, por si acaso miramos también
                     // su directorio HOME en su fila del passwd, aunque esté desaconsejado (lo uso como un fallback).
                     
-                    if(chdir(getenv("HOME") != NULL ? getenv("HOME") : getpwuid(getuid())->pw_dir) != 0) {
+                    if(chdir(getenv("HOME") != NULL ? getenv("HOME") : getpwuid(getuid())->pw_dir) != 0)
                         perror("cd: Cannot move to home");
-                    }
-                } else {
-                    if(chdir(trozos_cmd0[1]) != 0) {
-                        perror("cd: Cannot move to directory");
-                    }
-                }
+                } else if(chdir(trozos_cmd0[1]) != 0)
+                    perror("cd: Cannot move to directory");
+                
                 
             }
         } else {
@@ -164,7 +159,8 @@ void ejecutar(char command[]) {
             if (pid == -1) {
                 perror("ERROR: Error whilst creating child process.\n");
                 exit(1);
-            } else if (pid == 0) _execChild(trozos_cmd0, pathin0, pathout0, patherr0, pathappout0); // Proceso hijo
+            } else if (pid == 0) 
+                _execChild(trozos_cmd0, pathin0, pathout0, patherr0, pathappout0); // Proceso hijo
         }
 
         wait(NULL);
